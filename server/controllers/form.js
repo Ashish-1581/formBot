@@ -3,7 +3,7 @@ const Folder = require("../models/folderModel");
 
 const createForm = async (req, res) => {
     const { title, elements, folderId,bubbleCounts, inputCounts } = req.body;
-    console.log(req.body);
+  
 
     try {
         // Validate if folder exists if folderId is provided
