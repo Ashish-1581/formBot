@@ -28,11 +28,7 @@ function Display({ elements, setElements, bubbleCounts,  inputCounts }) {
       }, {})
   );
 
-  useEffect(() => {
 
-    console.log(bubbleCounts, inputCounts);
-
-  }, [bubbleCounts, inputCounts]);
 
   const handleDelete = (index) => {
     
