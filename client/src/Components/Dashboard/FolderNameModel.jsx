@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { PiLineVerticalLight} from "react-icons/pi";
 const FolderNameModal = ({ isOpen, onClose, onSave }) => {
   const [folderName, setFolderName] = useState("");
 
@@ -15,7 +15,7 @@ const FolderNameModal = ({ isOpen, onClose, onSave }) => {
   return (
     <div style={styles.overlay}>
       <div style={styles.modal}>
-        <h2>Create Folder</h2>
+        <h3>Create New Folder</h3>
         <input
           type="text"
           placeholder="Enter folder name"
@@ -23,8 +23,16 @@ const FolderNameModal = ({ isOpen, onClose, onSave }) => {
           onChange={(e) => setFolderName(e.target.value)}
           style={styles.input}
         />
-        <button onClick={handleSave} style={styles.button}>Save</button>
+        <div style={{display:"flex",justifyContent:"space-around"}}>
+        
+        <button onClick={handleSave} style={styles.button}>Done</button>
+        
+        <PiLineVerticalLight style={{fontSize:"2rem",color:"#2e2e34"}}/>
+
         <button onClick={onClose} style={styles.button}>Cancel</button>
+        
+        </div>
+       
       </div>
     </div>
   );
@@ -39,23 +47,46 @@ const styles = {
     bottom: 0,
     background: 'rgba(0, 0, 0, 0.5)',
     display: 'flex',
+  
     alignItems: 'center',
     justifyContent: 'center',
+    zIndex: 1000,
+    
   },
   modal: {
-    background: 'white',
+    background: '#18181B',
+    width: '300px',
+    height:"150px",
+    color:"white",
     padding: '20px',
     borderRadius: '8px',
-    textAlign: 'center',
+    
+    zIndex: 1001,
   },
   input: {
     margin: '10px 0',
-    padding: '8px',
-    width: '80%',
+    padding: '10px',
+    width: '100%',
+    outline: "none",
+    background: "#2e2e34",
+    borderRadius:"5px",
+    color: "white",
+    border:"none"
+
   },
   button: {
-    margin: '10px',
-  }
+   
+    padding: '8px',
+    borderRadius: '5px',
+    border:"none",
+    background:"none",
+    color: 'white',
+    fontSize:"1rem",
+    cursor: 'pointer',
+    
+    
+  },
+ 
 };
 
 export default FolderNameModal;
