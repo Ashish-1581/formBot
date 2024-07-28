@@ -1,0 +1,73 @@
+.button{
+    background-color:transparent;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    
+    cursor: pointer;
+}
+.button:focus {
+ border:1px solid #7EA6FF;
+ color: #7EA6FF;
+ border-radius: 10px;
+}
+
+
+.save{
+    background-color:#4ADE80;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    padding: 5px 15px;
+    text-align: center;
+   cursor: pointer;
+}
+.share{
+    
+    border-radius: 5px;
+    border: none;
+    color: white;
+    padding: 5px 15px;
+    text-align: center;
+   cursor: pointer;
+}
+
+.cross{
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+.text{
+    background: #37373E;
+    color: white;
+    border: none;
+    padding: 8px;
+    outline: none;
+    width: 100%;
+    border-radius: 5px;
+    
+}
+
+.elements{
+    background: #18181B;
+    color: white;
+    border-radius: 5px;
+    
+    width: 250px;
+    padding: 10px 20px;
+}
+
+.bubble{
+    background: #18181B;
+    color: white;
+    border-radius: 5px;
+    
+    width: 200px;
+    padding: 10px 20px;
+
+}

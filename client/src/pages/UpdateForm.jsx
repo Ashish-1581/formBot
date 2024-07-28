@@ -13,9 +13,9 @@ function UpdateForm() {
   ]);
   const [bubbleCounts, setBubbleCounts] = useState({
     text: 0,
-    imageURL: 0,
-    videoURL: 0,
-    gifURL: 0
+    image: 0,
+    video: 0,
+    gif: 0
   });
 
   const [inputCounts, setInputCounts] = useState({
