@@ -21,6 +21,9 @@ function Nav() {
           backgroundColor: "#18181B",
           textAlign: "center",
           borderBottom: "1px solid #808080 ",
+          position: "fixed",
+          width: "100%",
+          zIndex: "100",
         }}
       >
         <select

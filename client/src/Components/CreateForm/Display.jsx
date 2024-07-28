@@ -7,7 +7,7 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 
 function Display({ elements, setElements, bubbleCounts, inputCounts }) {
   const [formId, setFormId] = useState("");
-  const [title, setTitle] = useState("new Form");
+  const [title, setTitle] = useState("New Form");
   const [isInFolder, setIsInFolder] = useState(false);
   const { folderId } = useParams();
   const navigate = useNavigate();
@@ -154,7 +154,7 @@ function Display({ elements, setElements, bubbleCounts, inputCounts }) {
           />
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <button className={styles.button}>Flow</button>
+          <button className={styles.active}>Flow</button>
           <button className={styles.button}>Theme</button>
           <button className={styles.button}>Response</button>
         </div>

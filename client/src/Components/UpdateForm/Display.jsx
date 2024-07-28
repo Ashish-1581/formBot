@@ -55,10 +55,10 @@ const token=localStorage.getItem('token')
     const newErrors = {};
     elements.forEach((element, idx) => {
       if (element.elementType === 'bubble' && !bubbleContent[idx]) {
-        newErrors[`bubble-${idx}`] = 'This field is required';
+        newErrors[`bubble-${idx}`] = 'Required field';
       }
       if (element.elementType === 'input' && element.type === 'button' && !buttonContent[idx]) {
-        newErrors[`button-${idx}`] = 'This field is required';
+        newErrors[`button-${idx}`] = 'Required field';
       }
     });
     setErrors(newErrors);
@@ -135,7 +135,7 @@ const token=localStorage.getItem('token')
         />
       </div>
       <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-        <button className={styles.button}>Flow</button>
+        <button className={styles.active}>Flow</button>
         <button className={styles.button}>Theme</button>
         <button className={styles.button}>Response</button>
       </div>

@@ -10,10 +10,22 @@
     
     cursor: pointer;
 }
-.button:focus {
- border:1px solid #7EA6FF;
- color: #7EA6FF;
- border-radius: 10px;
+
+
+.active{
+    border:1px solid #7EA6FF;
+    color: #7EA6FF;
+    border-radius: 10px;
+
+    background-color:transparent;
+ 
+    
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+
 }
 
 
@@ -62,12 +74,3 @@
     padding: 10px 20px;
 }
 
-.bubble{
-    background: #18181B;
-    color: white;
-    border-radius: 5px;
-    
-    width: 200px;
-    padding: 10px 20px;
-
-}

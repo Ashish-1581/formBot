@@ -48,7 +48,7 @@ function Body() {
 
   return (
     <div>
-      <div style={{ background: "#18181B", height: "100vh",overflow:"auto" }}>
+      <div style={{ background: "#18181B", height: "100vh",overflow:"auto",paddingTop:"40px" }}>
         <CreateFolder />
         <div
           style={{

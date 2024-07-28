@@ -48,7 +48,7 @@ function Folder() {
   return (
     <div>
       <Nav />
-      <div style={{ background: "#18181B", height: "100vh" }}>
+      <div style={{ background: "#18181B", height: "100vh",paddingTop:"40px" }}>
         <div
           style={{
             display: "flex",

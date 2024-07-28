@@ -46,7 +46,7 @@ function UpdateForm() {
   }
  
   return (
-    <div>UpdateForm
+    <div>
     <SideBar elements={elements} setElements={setElements} bubbleCounts={bubbleCounts} setBubbleCounts={setBubbleCounts} inputCounts={inputCounts} setInputCounts={setInputCounts} />
     <Display elements={elements} setElements={setElements} formId={formId} title={title} setTitle={setTitle} bubbleCounts={bubbleCounts}  inputCounts={inputCounts}  />
     
