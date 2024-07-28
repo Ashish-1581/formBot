@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { getSubmissions } from "../../api/analyticsApi";
+import styles from "./Submissions.module.css";
 
 function Submissions({ formId }) {
   const [subs, setSubs] = useState([]);
   const [columns, setColumns] = useState([]);
+  const token=localStorage.getItem("token");
 
   const fetchSubmissions = async () => {
     try {
-      const response = await getSubmissions(formId);
+      const response = await getSubmissions({formId,token});
       console.log( response);
       
       if (response.status === 200) {
@@ -38,9 +40,10 @@ function Submissions({ formId }) {
   }, [formId]);
 
   return (
-    <div>
-      <h1>Submissions for Form ID: {formId}</h1>
-      <table border="1" cellPadding="10" style={{ borderCollapse: "collapse", width: "100%" }}>
+    <div className={styles.container}>
+    
+    <div className={styles.tableContainer}>
+      <table className={styles.fixedTable} border="1" cellPadding="10">
         <thead>
           <tr>
             {columns.map((col, index) => (
@@ -59,6 +62,7 @@ function Submissions({ formId }) {
         </tbody>
       </table>
     </div>
+  </div>
   );
 }
 

@@ -10,6 +10,7 @@ import Folder from './pages/Folder';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Settings from './pages/Settings';
+import Theme from './pages/Theme';
 
 function App() {
   
@@ -30,6 +31,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard  />} />
           <Route path="/folder/:folderId" element={<Folder/>} />
           <Route path="/settings" element={<Settings/>} />
+          <Route path="/theme/:formId" element={<Theme/>} />
         
         </Routes>
       

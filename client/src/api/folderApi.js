@@ -23,6 +23,17 @@ const deleteFolder = async (id, token) => {
   }
 };
 
+const getFolderById = async (id, token) => {
+  try {
+    const response = await axios.get(`${BACKEND_URL}/folder/get/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    return response.data;
+  } catch (error) {
+    return error;
+  }
+}
+
 const getFolder = async (token) => {
   try {
     const response = await axios.get(`${BACKEND_URL}/folder/get`, {
@@ -34,4 +45,4 @@ const getFolder = async (token) => {
   }
 };
 
-export { createFolder, getFolder, deleteFolder };
+export { createFolder, getFolder, deleteFolder,getFolderById  };

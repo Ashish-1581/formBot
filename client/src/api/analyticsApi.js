@@ -12,9 +12,11 @@ const setSubmissions=async ({formId,data,inputFieldCount}) => {
     }
 }
 
-const getSubmissions=async (formId) => {
+const getSubmissions=async ({formId,token}) => {
     try {
-        const response = await axios.get(`${BACKEND_URL}/analytics/get/${formId}`);
+        const response = await axios.get(`${BACKEND_URL}/analytics/get/${formId}`, {
+            headers: { Authorization: `Bearer ${token}` },
+          });
         return response;
     } catch (error) {
         return error;

@@ -56,6 +56,8 @@ function Body() {
             gap: "20px",
             padding: "1px 100px",
             color: "white",
+            flexWrap: "wrap",
+            overflow: "auto",
           }}
         >
           <div

@@ -1,0 +1,57 @@
+.button{
+    background-color:transparent;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    
+    cursor: pointer;
+}
+
+
+.active{
+    border:1px solid #7EA6FF;
+    color: #7EA6FF;
+    border-radius: 10px;
+
+    background-color:transparent;
+ 
+    
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+
+}
+
+
+.save{
+    background-color:#4ADE80;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    padding: 5px 15px;
+    text-align: center;
+   cursor: pointer;
+}
+.share{
+    
+    border-radius: 5px;
+    border: none;
+    color: white;
+    padding: 5px 15px;
+    text-align: center;
+   cursor: pointer;
+   background-color:  #1A5FFF;
+}
+
+.cross{
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}

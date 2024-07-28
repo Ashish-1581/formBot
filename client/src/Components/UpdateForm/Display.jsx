@@ -136,8 +136,8 @@ const token=localStorage.getItem('token')
       </div>
       <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
         <button className={styles.active}>Flow</button>
-        <button className={styles.button}>Theme</button>
-        <button className={styles.button}>Response</button>
+        <button onClick={()=>navigate(`/theme/${formId}`)} className={styles.button}>Theme</button>
+        <button onClick={()=>navigate(`/analytics/${formId}`)} className={styles.button}>Response</button>
       </div>
 
       <div

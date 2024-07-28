@@ -10,6 +10,7 @@ function NavBar({ formId, data, inputFieldCount }) {
   const [saved, setSaved] = useState(true);
   const navigate = useNavigate();
   
+  
 
 
 

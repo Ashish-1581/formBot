@@ -7,6 +7,7 @@ import { FaPlus } from "react-icons/fa6";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import Nav from "../Components/Dashboard/Nav";
 import DeleteFormModel from "../Components/Dashboard/DeleteFormModel";
+import { getFolderById } from "../api/folderApi";
 
 function Folder() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -15,12 +16,29 @@ function Folder() {
   const navigate = useNavigate();
   useEffect(() => {
     fetchForm();
+    fetchFolder();
   }, []);
   const [forms, setForms] = useState([]);
+
+  const [folderName, setFolderName] = useState("");
+
+  const fetchFolder = async () => {
+    try {
+      const response = await getFolderById(folderId, token);
+      console.log(response);
+      setFolderName(response.name);
+     
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
 
   const fetchForm = async () => {
     try {
       const response = await getFormByFolder(folderId, token);
+     
 
       setForms(response);
     } catch (error) {
@@ -48,15 +66,30 @@ function Folder() {
   return (
     <div>
       <Nav />
-      <div style={{ background: "#18181B", height: "100vh",paddingTop:"40px" }}>
+      <div style={{ background: "#18181B", height: "100vh",overflow:"auto",paddingTop:"80px" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            color: "white",
+            fontSize: "2rem",
+          }}
+        >
+          {folderName}
+
+        </div>
+     
         <div
           style={{
             display: "flex",
             gap: "20px",
             padding: "50px 100px",
             color: "white",
+            flexWrap: "wrap",
+            overflow: "auto",
           }}
         >
+        
           <div
             onClick={() => navigate(`/create/${folderId}`)}
             style={{

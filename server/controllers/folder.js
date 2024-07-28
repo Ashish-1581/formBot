@@ -19,6 +19,17 @@ const getFolder = async (req, res) => {
     }
 }
 
+const getFolderById = async (req, res) => {
+    const { folderId } = req.params;
+    try {
+        const folder = await Folder.findOne({ _id: folderId, userId: req.userId });
+        res.send(folder);
+    } catch (error) {
+        res.status(500).send({ message: "Error fetching folder" });
+    }
+}
+
+
 const deleteFolder = async (req, res) => {  
     const { folderId } = req.params;
     try {
@@ -30,4 +41,4 @@ const deleteFolder = async (req, res) => {
     }
 }
 
-module.exports = { createFolder, getFolder, deleteFolder };
+module.exports = { createFolder, getFolder,getFolderById, deleteFolder };

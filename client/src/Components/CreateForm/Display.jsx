@@ -13,7 +13,7 @@ function Display({ elements, setElements, bubbleCounts, inputCounts }) {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
   const [isButtonActive, setIsButtonActive] = useState(false);
-  const[activeFlow,setActiveFlow]=useState(true)
+  const [activeFlow, setActiveFlow] = useState(true);
 
   const [bubbleContent, setBubbleContent] = useState(
     elements
@@ -118,7 +118,6 @@ function Display({ elements, setElements, bubbleCounts, inputCounts }) {
       // navigate(`/chatbot/${formId}`);
     }
   };
- 
 
   useEffect(() => {
     if (folderId) {
@@ -155,8 +154,28 @@ function Display({ elements, setElements, bubbleCounts, inputCounts }) {
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
           <button className={styles.active}>Flow</button>
-          <button className={styles.button}>Theme</button>
-          <button className={styles.button}>Response</button>
+          <button
+            style={{
+              cursor: isButtonActive ? "pointer" : "not-allowed",
+              color: isButtonActive ? "white" : "grey",
+            }}
+            onClick={() => navigate(`/theme/${formId}`)}
+            disabled={!isButtonActive}
+            className={styles.button}
+          >
+            Theme
+          </button>
+          <button
+            style={{
+              cursor: isButtonActive ? "pointer" : "not-allowed",
+              color: isButtonActive ? "white" : "grey",
+            }}
+            onClick={() => navigate(`/analytics/${formId}`)}
+            disabled={!isButtonActive}
+            className={styles.button}
+          >
+            Response
+          </button>
         </div>
 
         <div
@@ -179,7 +198,7 @@ function Display({ elements, setElements, bubbleCounts, inputCounts }) {
           >
             Share
           </button>
-          <button className={styles.save}  onClick={handleSubmit}>
+          <button className={styles.save} onClick={handleSubmit}>
             Save
           </button>
 
@@ -205,9 +224,14 @@ function Display({ elements, setElements, bubbleCounts, inputCounts }) {
           paddingLeft: "45%",
         }}
       >
-        <div style={{ display: "flex", flexDirection: "column", gap: "20px",paddingBottom:"50px" }}>
-        
-
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "20px",
+            paddingBottom: "50px",
+          }}
+        >
           <div
             style={{ display: "flex", alignItems: "center", gap: "10px" }}
             className={styles.elements}
@@ -218,10 +242,21 @@ function Display({ elements, setElements, bubbleCounts, inputCounts }) {
           {elements.map((element, index) => (
             <div key={index} className={`${styles.elements}`}>
               {element.elementType === "bubble" && (
-                <div style={{display:"flex",flexDirection:"column",gap:"10px",position:"relative"}}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "10px",
+                    position: "relative",
+                  }}
+                >
                   <label>{element.name}</label>
                   <input
-                  style={{ border: errors[`bubble-${index}`] ? "2px solid red" : "none" }}
+                    style={{
+                      border: errors[`bubble-${index}`]
+                        ? "2px solid red"
+                        : "none",
+                    }}
                     className={styles.text}
                     type="text"
                     value={bubbleContent[index] || ""}
@@ -230,20 +265,44 @@ function Display({ elements, setElements, bubbleCounts, inputCounts }) {
                     }
                     placeholder={`click to add ${element.type} content`}
                   />
-                  <RiDeleteBin6Line style={{color:"red",cursor:"pointer",position:"absolute",top:"0px",right:"0px"}} onClick={() => handleDelete(index)} />
+                  <RiDeleteBin6Line
+                    style={{
+                      color: "red",
+                      cursor: "pointer",
+                      position: "absolute",
+                      top: "0px",
+                      right: "0px",
+                    }}
+                    onClick={() => handleDelete(index)}
+                  />
 
-                 
                   {errors[`bubble-${index}`] && (
-                    <span style={{color:"red",fontSize:"0.8rem"}} className="error">{errors[`bubble-${index}`]}</span>
+                    <span
+                      style={{ color: "red", fontSize: "0.8rem" }}
+                      className="error"
+                    >
+                      {errors[`bubble-${index}`]}
+                    </span>
                   )}
                 </div>
               )}
               {element.elementType === "input" && element.type === "button" && (
-                <div  style={{display:"flex",flexDirection:"column",gap:"10px",position:"relative"}}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "10px",
+                    position: "relative",
+                  }}
+                >
                   <label>{element.name}</label>
                   <input
-                  style={{ border: errors[`bubble-${index}`] ? "2px solid red" : "none" }}
-                  className={styles.text}
+                    style={{
+                      border: errors[`bubble-${index}`]
+                        ? "2px solid red"
+                        : "none",
+                    }}
+                    className={styles.text}
                     type="text"
                     value={buttonContent[index] || ""}
                     onChange={(e) =>
@@ -251,19 +310,49 @@ function Display({ elements, setElements, bubbleCounts, inputCounts }) {
                     }
                     placeholder={`Enter button content`}
                   />
-                  <RiDeleteBin6Line style={{color:"red",cursor:"pointer",position:"absolute",top:"0px",right:"0px"}} onClick={() => handleDelete(index)} />
+                  <RiDeleteBin6Line
+                    style={{
+                      color: "red",
+                      cursor: "pointer",
+                      position: "absolute",
+                      top: "0px",
+                      right: "0px",
+                    }}
+                    onClick={() => handleDelete(index)}
+                  />
                   {errors[`button-${index}`] && (
-                    <span style={{color:"red",fontSize:"0.8rem"}} className="error">{errors[`bubble-${index}`]}</span>
+                    <span
+                      style={{ color: "red", fontSize: "0.8rem" }}
+                      className="error"
+                    >
+                      {errors[`bubble-${index}`]}
+                    </span>
                   )}
                 </div>
               )}
               {element.elementType === "input" && element.type !== "button" && (
-                <div style={{display:"flex",flexDirection:"column",gap:"10px",position:"relative"}}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "10px",
+                    position: "relative",
+                  }}
+                >
                   <label>{element.name}</label>
-                  <div style={{fontSize:"0.8rem",color:"#555555"}}>
+                  <div style={{ fontSize: "0.8rem", color: "#555555" }}>
                     Hint : User will input a {element.type} on his form{" "}
                   </div>
-                  <RiDeleteBin6Line style={{color:"red",cursor:"pointer",position:"absolute",top:"0px",right:"0px"}} onClick={() => handleDelete(index)} />
+                  <RiDeleteBin6Line
+                    style={{
+                      color: "red",
+                      cursor: "pointer",
+                      position: "absolute",
+                      top: "0px",
+                      right: "0px",
+                    }}
+                    onClick={() => handleDelete(index)}
+                  />
                 </div>
               )}
             </div>

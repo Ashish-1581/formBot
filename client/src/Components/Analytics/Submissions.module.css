@@ -1,0 +1,27 @@
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tableContainer {
+  width: 80%;
+  height: 400px;
+  overflow: auto;
+}
+
+.fixedTable {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+}
+
+
+.fixedTable th, .fixedTable td {
+  width: 200px;  
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;  
+  text-overflow: ellipsis;  
+  height: 50px;  
+}

@@ -66,7 +66,14 @@ function CreateFolder() {
 
   return (
     <div>
-      <div style={{ display: "flex", gap: "20px", padding: "50px 100px" }}>
+      <div
+        style={{
+          display: "flex",
+          gap: "20px",
+          padding: "50px 100px",
+          flexWrap: "wrap",
+        }}
+      >
         <div
           style={{
             borderRadius: "5px",
@@ -90,7 +97,7 @@ function CreateFolder() {
         />
         {folders &&
           folders.map((folder) => (
-            <div>
+            <div key={folder._id}>
               <div
                 style={{
                   borderRadius: "5px",
@@ -100,14 +107,17 @@ function CreateFolder() {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "space-between",
+                  height: "50px",
 
                   width: "180px",
                 }}
-                key={folder._id}
               >
                 <div
                   style={{
                     color: "white",
+                    height: "50px",
+                    display: "flex",
+                    alignItems: "center",
 
                     width: "150px",
                   }}

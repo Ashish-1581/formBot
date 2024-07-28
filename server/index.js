@@ -8,6 +8,7 @@ const analyticsRoute = require("./routes/analyticsRoute");
 const folderRoute = require("./routes/folderRoute");
 const authRoute = require("./routes/authRoute");
 const viewsRoute = require("./routes/viewsRoute");
+const themeRoute=require("./routes/themeRoute");
 
 const app = express();
 app.use(cors());
@@ -27,6 +28,7 @@ app.use("/analytics", analyticsRoute);
 app.use("/folder", folderRoute);
 app.use("/auth", authRoute);
 app.use("/views", viewsRoute);
+app.use("/theme",themeRoute);
 
 app.listen(PORT||4000, () => {
     console.log(`Server is running on port ${PORT}`);

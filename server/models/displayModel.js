@@ -44,7 +44,13 @@ const ElementArraySchema = new Schema({
   },
   inputCounts:{
     type:Object,
-  }
+  },
+  theme:{
+    type:String,
+    default:"white",
+  
+  },
+  
 
 });
 
