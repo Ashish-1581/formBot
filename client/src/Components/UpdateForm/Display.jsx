@@ -4,6 +4,7 @@ import {  updateForm } from '../../api/formApi';
 import styles from './Display.module.css';
 import { RiFlag2Fill } from "react-icons/ri";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { toast } from 'react-toastify';
 
 function Display({ elements, setElements ,formId,title,setTitle,bubbleCounts,  inputCounts}) {
 
@@ -86,7 +87,8 @@ const token=localStorage.getItem('token')
         );
         if (response.status === 200) {
           setFormId(response.data._id);
-          console.log('Form updated successfully');
+          toast.success("Form updated successfully!");
+          
         }
       } catch (error) {
         console.error("Error creating form:", error);
@@ -99,7 +101,8 @@ const token=localStorage.getItem('token')
       let path=`${window.location.origin}/chatbot/${formId}`
       navigator.clipboard.writeText(path)
       .then(() => {
-        alert('Link copied to clipboard');
+        toast.success("Link copied to clipboard!");
+        
       })
       .catch(err => {
         console.error('Failed to copy: ', err);

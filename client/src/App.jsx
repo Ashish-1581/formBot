@@ -11,6 +11,8 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Settings from './pages/Settings';
 import Theme from './pages/Theme';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   
@@ -36,6 +38,7 @@ function App() {
         </Routes>
       
       </BrowserRouter>
+      <ToastContainer />
     </>
   )
 }

@@ -4,6 +4,7 @@ import { createForm } from "../../api/formApi";
 import styles from "./Display.module.css";
 import { RiFlag2Fill } from "react-icons/ri";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { toast } from 'react-toastify';
 
 function Display({ elements, setElements, bubbleCounts, inputCounts }) {
   const [formId, setFormId] = useState("");
@@ -97,6 +98,7 @@ function Display({ elements, setElements, bubbleCounts, inputCounts }) {
         );
         if (response.status === 201) {
           setFormId(response.data._id);
+          toast.success("Form created successfully");
         }
       } catch (error) {
         console.error("Error creating form:", error);
@@ -109,7 +111,8 @@ function Display({ elements, setElements, bubbleCounts, inputCounts }) {
       navigator.clipboard
         .writeText(path)
         .then(() => {
-          alert("Link copied to clipboard");
+          toast.success("Link copied to clipboard");
+          
         })
         .catch((err) => {
           console.error("Failed to copy: ", err);

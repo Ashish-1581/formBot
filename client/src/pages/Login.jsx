@@ -6,6 +6,7 @@ import pSemi from "../assets/authImg/pSemi.png";
 import ySemi from "../assets/authImg/ySemi.png";
 import tri2 from "../assets/authImg/tri2.png";
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -38,12 +39,16 @@ const Login = () => {
             if (response.status === 200) {
                 localStorage.setItem('user',response.data.user.username);
                 localStorage.setItem('token', response.data.token);
+                toast.success("Loged In successfully!");
+
               
                 navigate('/dashboard');
             }
             else{
+
+                toast.error(response.message);
                 
-                setErrors({ message: response.message });
+               
             }
         } catch (error) {
            

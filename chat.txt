@@ -3,30 +3,22 @@ import { useParams } from "react-router-dom";
 import { getSingleForm } from "../../api/formApi";
 import ReactPlayer from "react-player";
 import Rating from "./Rating";
-import styles from "./Chat.module.css";
-import { AiOutlineSend } from "react-icons/ai";
 
 function Chat({ data, setData, setInputFieldCount }) {
   const { id } = useParams();
-
+  
   const [elements, setElements] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [formData, setFormData] = useState({});
   const [canLoadNext, setCanLoadNext] = useState(true);
   const [errors, setErrors] = useState({});
-  const [sentInputs, setSentInputs] = useState(new Set()); // Track sent inputs
-  const [clickedButtonIndex, setClickedButtonIndex] = useState(null); // Track clicked button index
-
-
-
-
 
   useEffect(() => {
     const fetch = async () => {
       const response = await getSingleForm(id);
 
       setElements(response.elements);
-
+      
       setFormData(
         response.elements.reduce((acc, el, idx) => {
           if (el.elementType === "input" || el.type === "button") {
@@ -47,7 +39,7 @@ function Chat({ data, setData, setInputFieldCount }) {
   useEffect(() => {
     if (currentIndex < elements.length) {
       const currentElement = elements[currentIndex];
-
+  
       if (currentElement.elementType === "input") {
         setCanLoadNext(false);
       } else {
@@ -68,7 +60,6 @@ function Chat({ data, setData, setInputFieldCount }) {
   const handleButtonClick = (index, value) => {
     setFormData((prevData) => ({ ...prevData, [index]: value }));
     handleSubmit();
-    setClickedButtonIndex(index); // Set clicked button index
   };
 
   const handleInputChange = (index, value) => {
@@ -131,16 +122,15 @@ function Chat({ data, setData, setInputFieldCount }) {
       setErrors((prevErrors) => ({ ...prevErrors, [currentIndex]: "" }));
       setCurrentIndex((prevIndex) => prevIndex + 1);
       setCanLoadNext(true);
-      setSentInputs((prevSentInputs) => new Set(prevSentInputs).add(currentIndex));
     }
   };
 
   return (
-    <div  className={styles.chatContainer}>
+    <div className="inputs-page">
       {elements.slice(0, currentIndex + 1).map((element, index) => (
-        <div key={index} className={styles.itemContainer}>
+        <div key={index} className={`item ${element.elementType}`}>
           {element.elementType === "bubble" && (
-            <div className={styles.bubble}>
+            <div className="bubble">
               {element.type === "text" && <p>{element.content}</p>}
               {element.type === "image" && (
                 <img src={element.content} alt="bubble content" />
@@ -154,27 +144,19 @@ function Chat({ data, setData, setInputFieldCount }) {
             </div>
           )}
           {element.elementType === "input" && (
-            <div
-              style={{ display: "flex", gap: "10px" }}
-              className={`${styles.inputContainer}
-                 ${sentInputs.has(index) ? styles.sent : ""
-              }`
-            }
-            >
+            <div className="input">
+              {element.type.charAt(0).toUpperCase() + element.type.slice(1)}{" "}
+              Input
               {element.type === "text" && (
                 <input
-          
-                  disabled={sentInputs.has(index)}
                   type="text"
                   value={formData[index] || ""}
                   onChange={(e) => handleInputChange(index, e.target.value)}
-                  placeholder="Enter your text"
+                  placeholder="Enter text"
                 />
               )}
               {element.type === "date" && (
                 <input
-                
-                  disabled={sentInputs.has(index)}
                   type="date"
                   value={formData[index] || ""}
                   onChange={(e) => handleInputChange(index, e.target.value)}
@@ -182,8 +164,6 @@ function Chat({ data, setData, setInputFieldCount }) {
               )}
               {element.type === "email" && (
                 <input
-                
-                  disabled={sentInputs.has(index)}
                   type="email"
                   value={formData[index] || ""}
                   onChange={(e) => handleInputChange(index, e.target.value)}
@@ -192,8 +172,6 @@ function Chat({ data, setData, setInputFieldCount }) {
               )}
               {element.type === "number" && (
                 <input
-                 
-                  disabled={sentInputs.has(index)}
                   type="number"
                   value={formData[index] || ""}
                   onChange={(e) => handleInputChange(index, e.target.value)}
@@ -202,8 +180,6 @@ function Chat({ data, setData, setInputFieldCount }) {
               )}
               {element.type === "phone" && (
                 <input
-                 
-                  disabled={sentInputs.has(index)}
                   type="tel"
                   value={formData[index] || ""}
                   onChange={(e) => handleInputChange(index, e.target.value)}
@@ -212,38 +188,25 @@ function Chat({ data, setData, setInputFieldCount }) {
               )}
               {element.type === "button" && (
                 <button
-                  disabled={sentInputs.has(index)}
                   type="button"
                   onClick={() => handleButtonClick(index, element.content)}
-                  className={`${styles.inputButton} ${ clickedButtonIndex === index ? styles.clicked : ""}`}
                 >
                   {element.content}
                 </button>
               )}
               {element.type === "rating" && (
-                <div className={ `${
-                  sentInputs.has(index) ? styles.clicked : ""
-                }`}>
-                <div className={styles.rating}>
                 <Rating
-
-                  disabled={sentInputs.has(index)}
                   value={formData[index] || 0}
                   onChange={(value) => handleInputChange(index, value)}
                 />
-                </div>
-                </div>
               )}
-              {errors[index] && console.error("Error", errors[index])}
+              
+              {errors[index] && (
+                <div className="error">{errors[index]}</div>
+              )}
               {element.type !== "button" && (
-                <button
-                  type="button"
-                  onClick={handleSubmit}
-                  className={`${styles.sendButton} ${
-                    sentInputs.has(index) ? styles.clicked : ""
-                  }`}
-                >
-                  <AiOutlineSend style={{ fontSize: "1.5rem" }} />
+                <button type="button" onClick={handleSubmit}>
+                  Send
                 </button>
               )}
             </div>
