@@ -15,7 +15,7 @@ const getTheme = async ({formId}) => {
 const setTheme = async ({formId,theme}) => {
     try {
         const response = await axios.post(`${BACKEND_URL}/theme/set`, { theme },{params: { formId }});
-        return response.data;
+        return response;
     } catch (error) {
         console.error('Error setting theme:', error);
         return { error: error.response ? error.response.data : error.message };

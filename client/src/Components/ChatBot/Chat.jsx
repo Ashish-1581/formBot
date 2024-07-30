@@ -5,6 +5,7 @@ import ReactPlayer from "react-player";
 import Rating from "./Rating";
 import styles from "./Chat.module.css";
 import { AiOutlineSend } from "react-icons/ai";
+import { toast } from "react-toastify";
 
 function Chat({ data, setData, setInputFieldCount }) {
   const { id } = useParams();
@@ -14,8 +15,8 @@ function Chat({ data, setData, setInputFieldCount }) {
   const [formData, setFormData] = useState({});
   const [canLoadNext, setCanLoadNext] = useState(true);
   const [errors, setErrors] = useState({});
-  const [sentInputs, setSentInputs] = useState(new Set()); // Track sent inputs
-  const [clickedButtonIndex, setClickedButtonIndex] = useState(null); // Track clicked button index
+  const [sentInputs, setSentInputs] = useState(new Set()); 
+  const [clickedButtonIndex, setClickedButtonIndex] = useState(null); 
 
 
 
@@ -68,7 +69,7 @@ function Chat({ data, setData, setInputFieldCount }) {
   const handleButtonClick = (index, value) => {
     setFormData((prevData) => ({ ...prevData, [index]: value }));
     handleSubmit();
-    setClickedButtonIndex(index); // Set clicked button index
+    setClickedButtonIndex(index); 
   };
 
   const handleInputChange = (index, value) => {
@@ -234,7 +235,7 @@ function Chat({ data, setData, setInputFieldCount }) {
                 </div>
                 </div>
               )}
-              {errors[index] && console.error("Error", errors[index])}
+             
               {element.type !== "button" && (
                 <button
                   type="button"

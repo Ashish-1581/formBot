@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styles from "./Nav.module.css";
 import {  setTheme } from "../../api/themeApi";
+import { toast } from "react-toastify";
 
 function Nav({ theme }) {
   const navigate = useNavigate();
@@ -9,6 +10,9 @@ function Nav({ theme }) {
 
   const handleSave = async () => {
     const response = await setTheme({ formId, theme });
+   if (response.status === 200) {
+      toast.success("Theme saved successfully!");
+    }
   };
 
   const handleShare = () => {
@@ -16,7 +20,7 @@ function Nav({ theme }) {
     navigator.clipboard
       .writeText(path)
       .then(() => {
-        alert("Link copied to clipboard");
+        toast.success("Link copied to clipboard!");
       })
       .catch((err) => {
         console.error("Failed to copy: ", err);
