@@ -1,10 +1,10 @@
 import axios from 'axios';
-const BACKEND_ORIGIN_URL = 'http://localhost:4000';
+const BACKEND_ORIGIN_URL = import.meta.env.VITE_BACKEND_URL;
 
 const getViews=async ({formId})=>{
    
     try{
-        const response= await axios.get(`${BACKEND_ORIGIN_URL}/views/get`,{params: { formId }});
+        const response= await axios.get(`/views/get`,{params: { formId }});
   
         return response;
     }catch(error){
@@ -15,7 +15,7 @@ const getViews=async ({formId})=>{
 const setTheViews=async ({formId,views})=>{
    
     try{
-        const response= await axios.post(`${BACKEND_ORIGIN_URL}/views/set`,{formId,views});
+        const response= await axios.post(`/views/set`,{formId,views});
         
         return response;
     }catch(error){

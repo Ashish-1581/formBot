@@ -1,9 +1,9 @@
 import axios from 'axios';
-const BACKEND_URL = 'http://localhost:4000';
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 const createForm=async (data,token) => {
     try {
-        const response = await axios.post(`${BACKEND_URL}/form/create`, data, {
+        const response = await axios.post(`/form/create`, data, {
             headers: {
                 'Authorization': `Bearer ${token}` 
             }
@@ -18,7 +18,7 @@ const createForm=async (data,token) => {
 
 const getSingleForm=async (id) => {
     try {
-        const response = await axios.get(`${BACKEND_URL}/form/get/${id}`);
+        const response = await axios.get(`/form/get/${id}`);
         return response.data;
     } catch (error) {
         return error;
@@ -26,7 +26,7 @@ const getSingleForm=async (id) => {
 }
 const getFormByFolder = async (folderId,token) => {
     try {
-      const response = await axios.get(`${BACKEND_URL}/form/get/by-folder/${folderId}`, {
+      const response = await axios.get(`/form/get/by-folder/${folderId}`, {
         headers: {
             'Authorization': `Bearer ${token}` 
         }
@@ -40,7 +40,7 @@ const getFormByFolder = async (folderId,token) => {
 
   const getFormNotInFolder = async (token) => {
     try {
-      const response = await axios.get(`${BACKEND_URL}/form/get/no-folder`, {
+      const response = await axios.get(`/form/get/no-folder`, {
         headers: {
             'Authorization': `Bearer ${token}` 
         }
@@ -54,7 +54,7 @@ const getFormByFolder = async (folderId,token) => {
 
 const updateForm=async (id,data,token) => {
     try {
-        const response = await axios.put(`${BACKEND_URL}/form/update/${id}`,data, {
+        const response = await axios.put(`/form/update/${id}`,data, {
             headers: {
                 'Authorization': `Bearer ${token}` 
             }
@@ -67,7 +67,7 @@ const updateForm=async (id,data,token) => {
 
 const deleteForm=async (id,token) => {
     try {
-        const response = await axios.delete(`${BACKEND_URL}/form/delete/${id}`, {
+        const response = await axios.delete(`/form/delete/${id}`, {
             headers: {
                 'Authorization': `Bearer ${token}` 
             }

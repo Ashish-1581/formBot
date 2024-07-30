@@ -9,12 +9,13 @@ const folderRoute = require("./routes/folderRoute");
 const authRoute = require("./routes/authRoute");
 const viewsRoute = require("./routes/viewsRoute");
 const themeRoute=require("./routes/themeRoute");
-
+const path = require("path");
 const app = express();
 app.use(cors());
 env.config(); 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, "public")));
 
 const PORT = process.env.PORT ;
 const MONGO_URL = process.env.MONGO_URL;
