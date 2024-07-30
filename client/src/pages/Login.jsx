@@ -39,7 +39,7 @@ const Login = () => {
             if (response.status === 200) {
                 localStorage.setItem('user',response.data.user.username);
                 localStorage.setItem('token', response.data.token);
-                toast.success("Loged In successfully!");
+                toast.success("Logged In successfully!");
 
               
                 navigate('/dashboard');

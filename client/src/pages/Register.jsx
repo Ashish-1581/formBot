@@ -54,7 +54,7 @@ const Register = () => {
         if (loginResponse.status === 200) {
           localStorage.setItem("user", loginResponse.data.user.username);
           localStorage.setItem("token", loginResponse.data.token);
-          toast.success("Loged In successfully!");
+          toast.success("Logged In successfully!");
           navigate("/dashboard");
         }
         else{
