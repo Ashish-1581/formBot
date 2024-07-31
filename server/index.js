@@ -21,7 +21,7 @@ const PORT = process.env.PORT ;
 const MONGO_URL = process.env.MONGO_URL;
 
 app.get("/", (req, res) => {
-    res.send("Welcome to form-bot-backend");
+    res.send("Welcome to formbot-backend");
 }   
 );
 
