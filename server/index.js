@@ -20,9 +20,7 @@ app.use(express.static(path.join(__dirname, "public")));
 const PORT = process.env.PORT ;
 const MONGO_URL = process.env.MONGO_URL;
 
-app.get('/', (req, res) => {
-    res.send('Hello World');
-});
+
 
 app.use("/form", formRoute);
 app.use("/analytics", analyticsRoute);
@@ -30,6 +28,13 @@ app.use("/folder", folderRoute);
 app.use("/auth", authRoute);
 app.use("/views", viewsRoute);
 app.use("/theme",themeRoute);
+
+app.use("*", (req, res) => {
+    res.status(404).json({
+        message: 'Endpoint not found',
+        status: 'Error',
+    });
+});
 
 app.listen(PORT||4000, () => {
     console.log(`Server is running on port ${PORT}`);
