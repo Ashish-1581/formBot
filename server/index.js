@@ -13,14 +13,11 @@ const themeRoute=require("./routes/themeRoute");
 const app = express();
 app.use(cors(
     {
-        origin: ["https://form-bot-frontend-sand.vercel.app","http://localhost:5173"],
-        methods:["GET","POST","PUT","DELETE","PATCH"],
-        credentials:true,
-
-       
+        origin: "*",
+        methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
         allowedHeaders: "Content",
 
-
+        
     }
 
 
