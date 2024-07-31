@@ -11,17 +11,7 @@ const viewsRoute = require("./routes/viewsRoute");
 const themeRoute=require("./routes/themeRoute");
 
 const app = express();
-app.use(cors(
-    {
-        origin: "*",
-        methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-        allowedHeaders: "Content",
-
-        
-    }
-
-
-));
+app.use(cors());
 env.config(); 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
