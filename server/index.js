@@ -12,17 +12,7 @@ const themeRoute=require("./routes/themeRoute");
 
 const app = express();
 app.use(cors());
-env.config(
-    {
-        "origin": "*",
-        "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-        "preflightContinue": false,
-        "optionsSuccessStatus": 204
-        
-
-
-    }
-); 
+env.config(); 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
