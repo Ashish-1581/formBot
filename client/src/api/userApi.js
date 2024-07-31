@@ -4,7 +4,7 @@ const BACKEND_ORIGIN_URL = import.meta.env.VITE_BACKEND_URL;
 const login=async ({email,password})=>{
     try{
 
-        const response= await axios.post(`/auth/login`,{email,password});
+        const response= await axios.post(`${BACKEND_ORIGIN_URL}/auth/login`,{email,password});
        
         return response;
     }catch(error){
@@ -15,7 +15,7 @@ const login=async ({email,password})=>{
 const register=async ( {username, email, password, confirmPassword} )=>{
     try{
 
-        const response= await axios.post(`/auth/register`,{ username, email, password, confirmPassword });
+        const response= await axios.post(`${BACKEND_ORIGIN_URL}/auth/register`,{ username, email, password, confirmPassword });
        
         return response;
     }catch(error){
@@ -26,7 +26,7 @@ const register=async ( {username, email, password, confirmPassword} )=>{
 const updateUserDetails=async ( {username, email, oldPassword, newPassword} )=>{
     try{
 
-        const response= await axios.post(`/auth/update-user`,{ username, email, oldPassword, newPassword });
+        const response= await axios.post(`${BACKEND_ORIGIN_URL}/auth/update-user`,{ username, email, oldPassword, newPassword });
        
         return response;
     }catch(error){

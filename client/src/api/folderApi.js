@@ -3,7 +3,7 @@ const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 const createFolder = async (data, token) => {
   try {
-    const response = await axios.post(`/folder/create`, data, {
+    const response = await axios.post(`${BACKEND_URL}/folder/create`, data, {
       headers: { Authorization: `Bearer ${token}` },
     });
     return response;
@@ -14,7 +14,7 @@ const createFolder = async (data, token) => {
 
 const deleteFolder = async (id, token) => {
   try {
-    const response = await axios.delete(`/folder/delete/${id}`, {
+    const response = await axios.delete(`${BACKEND_URL}/folder/delete/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     return response.data;
@@ -25,7 +25,7 @@ const deleteFolder = async (id, token) => {
 
 const getFolderById = async (id, token) => {
   try {
-    const response = await axios.get(`/folder/get/${id}`, {
+    const response = await axios.get(`${BACKEND_URL}/folder/get/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     return response.data;
@@ -36,7 +36,7 @@ const getFolderById = async (id, token) => {
 
 const getFolder = async (token) => {
   try {
-    const response = await axios.get(`/folder/get`, {
+    const response = await axios.get(`${BACKEND_URL}/folder/get`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     return response.data;
