@@ -50,7 +50,10 @@ const Register = () => {
         confirmPassword,
       });
       if (response.status === 200) {
+
         const loginResponse = await login({ email, password });
+      
+       
         if (loginResponse.status === 200) {
           localStorage.setItem("user", loginResponse.data.user.username);
           localStorage.setItem("token", loginResponse.data.token);
@@ -59,9 +62,17 @@ const Register = () => {
         }
         else{
           toast.error(loginResponse.message);
+          
         }
       }
+      else {
+        toast.error(response.message || "Registration failed");
+      }
+      console.log(response);
+     
+      
     } catch (error) {
+      toast.error("An error occurred. Please try again.");
       console.log(error);
     }
   };
