@@ -14,6 +14,7 @@ const login=async ({email,password})=>{
 
 const register=async ( {username, email, password, confirmPassword} )=>{
     try{
+        console.log(username, email, password, confirmPassword);
 
         const response= await axios.post(`${BACKEND_ORIGIN_URL}/auth/register`,{ username, email, password, confirmPassword });
        

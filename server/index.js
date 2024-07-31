@@ -42,9 +42,7 @@ app.use("/auth", authRoute);
 app.use("/views", viewsRoute);
 app.use("/theme",themeRoute);
 
-app.get("*", (req, res) => {
-    res.status(404).send("404, Page not found");
-});
+
 
 
 
