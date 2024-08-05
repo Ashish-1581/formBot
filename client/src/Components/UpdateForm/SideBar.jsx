@@ -143,9 +143,7 @@ function SideBar({ elements, setElements, setBubbleCounts, setInputCounts ,bubbl
               <IoMdCheckboxOutline style={{ color: "#FFA54C",fontSize:"1.2rem" }} />
                 Buttons
               </button>
-              <button className={styles.buttons} onClick={handleSubmit}>
-                display
-              </button>
+             
             </div>
           </div>
         </div>
