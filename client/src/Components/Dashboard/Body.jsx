@@ -8,39 +8,38 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import DeleteFormModel from "./DeleteFormModel";
 
 function Body() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalFormId, setModalFormId] = useState(null); // Track which form's modal is open
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
+  const [forms, setForms] = useState([]);
+
   useEffect(() => {
     fetchForm();
   }, []);
-  const [forms, setForms] = useState([]);
 
   const fetchForm = async () => {
     try {
       const response = await getFormNotInFolder(token);
-
       setForms(response);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const OpenFolderModel = () => {
-    setIsModalOpen(true);
+  const openDeleteModal = (formId) => {
+    setModalFormId(formId); // Set the form's ID to open the modal
   };
 
-  const CloseFolderModel = () => {
-    setIsModalOpen(false);
+  const closeDeleteModal = () => {
+    setModalFormId(null); // Close the modal
   };
 
-  const handelDelete = async (id) => {
+  const handleDelete = async (id) => {
     try {
       const response = await deleteForm(id, token);
       console.log(response);
-      fetchForm();
-
-      CloseFolderModel();
+      fetchForm(); // Refresh the list after deleting the form
+      closeDeleteModal();
     } catch (error) {
       console.log(error);
     }
@@ -48,7 +47,7 @@ function Body() {
 
   return (
     <div>
-      <div style={{ background: "#18181B", height: "100vh",overflow:"auto",paddingTop:"40px" }}>
+      <div style={{ background: "#18181B", height: "100vh", overflow: "auto", paddingTop: "40px" }}>
         <CreateFolder />
         <div
           style={{
@@ -79,13 +78,13 @@ function Body() {
             <FaPlus style={{ fontSize: "1.5rem" }} />
             <p style={{ fontSize: "1rem" }}>Create a typeBot</p>
           </div>
+
           {forms.map((form) => (
             <div key={form._id}>
               <div
                 style={{
                   background: "#52525c",
                   borderRadius: "5px",
-
                   cursor: "pointer",
                   gap: "20px",
                   position: "relative",
@@ -113,14 +112,18 @@ function Body() {
                     top: "0px",
                     right: "0px",
                   }}
-                  onClick={OpenFolderModel}
+                  onClick={() => openDeleteModal(form._id)} // Open modal for this form
                 />
               </div>
-              <DeleteFormModel
-                isOpen={isModalOpen}
-                onClose={CloseFolderModel}
-                onDelete={() => handelDelete(form._id)}
-              />
+
+              {/* Only open the modal for the specific form */}
+              {modalFormId === form._id && (
+                <DeleteFormModel
+                  isOpen={modalFormId === form._id}
+                  onClose={closeDeleteModal}
+                  onDelete={() => handleDelete(form._id)} // Pass the correct form ID to delete
+                />
+              )}
             </div>
           ))}
         </div>
@@ -130,5 +133,3 @@ function Body() {
 }
 
 export default Body;
-
-// </div>
